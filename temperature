@@ -1,0 +1,57 @@
+// Start of the TemperatureConversion Program Class
+Class TemperatureConversion
+
+    // Main method to run the program
+    Main Method
+        Declare userInput as String
+        Declare temperatureValue as Double
+        Declare temperatureUnit as String
+        Declare convertedValue as Double
+        Declare convertedUnit as String
+
+        // Loop until valid input is received
+        Do
+            Print "Enter temperature (e.g., 25 C or 77 F):"
+            Read userInput
+
+            // Try-Catch block for validating numeric temperature input
+            Try
+                Split userInput into temperatureValue (Double) and temperatureUnit (String) based on space
+            Catch Exception
+                Print "Invalid format. Please enter a valid numeric temperature followed by unit."
+                Continue Loop
+            End Try
+
+            // Validate temperature unit
+            If temperatureUnit is not "C" and temperatureUnit is not "F" Then
+                Print "Invalid unit. Please enter 'C' for Celsius or 'F' for Fahrenheit."
+            Else
+                Exit Loop // Valid input format
+            End If
+        While invalid input
+
+        // Function call to convert temperature
+        convertedValue = ConvertTemperature(temperatureValue, temperatureUnit)
+
+        // Determine converted unit
+        If temperatureUnit is "C" Then
+            Set convertedUnit to "F"
+        Else
+            Set convertedUnit to "C"
+        End If
+
+        // Print the converted temperature
+        Print "The converted temperature is " + convertedValue + " " + convertedUnit
+    End Main Method
+
+    // Function to convert temperature based on unit
+    Function ConvertTemperature(inputValue as Double, inputUnit as String) as Double
+        If inputUnit is "C" Then
+            Return (inputValue * 9/5) + 32 // Celsius to Fahrenheit conversion
+        Else If inputUnit is "F" Then
+            Return (inputValue - 32) * 5/9 // Fahrenheit to Celsius conversion
+        End If
+    End Function
+
+End Class
+// End of the TemperatureConversion Program
